@@ -71,6 +71,7 @@ install_package luci-app-wol
 install_package ddns-scripts
 install_package ddns-scripts-cloudflare
 install_package luci-app-acme
+_say "DONE installing packages"
 wait
 
 _say "DELETING any existing .git directory"

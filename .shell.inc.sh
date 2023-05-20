@@ -37,7 +37,7 @@ install_package() {
         if [ $? -eq 0 ]; then
             _say "Package '$1' has been installed successfully."
         else
-            say "Failed to install package '$1'."
+            _say "Failed to install package '$1'."
             return 1
         fi
     fi
