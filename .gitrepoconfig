@@ -1,13 +1,13 @@
 [core]
 	repositoryformatversion = 0
-	filemode = false
+	filemode = true
 	bare = false
 	logallrefupdates = true
 	ignorecase = true
 	precomposeunicode = true
-[remote "gitea.homelab"]
+[remote "origin"]
 	url = http://gitea.manjeet:3000/manjeet/backup-openwrt.homelab-netgear-r6220.git
-	fetch = +refs/heads/*:refs/remotes/gitea.homelab/*
+	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
-	remote = gitea.homelab
+	remote = origin
 	merge = refs/heads/main
