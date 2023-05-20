@@ -24,7 +24,7 @@ say_(){
 }
 
 wait() {
-    sleep 1
+    sleep 5
 }
 
 install_package() {
@@ -42,5 +42,5 @@ install_package() {
         fi
     fi
 
-    sleep 0.5
+    usleep 500000
 }

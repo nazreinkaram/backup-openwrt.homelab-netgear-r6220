@@ -18,7 +18,7 @@ else
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
     trap "rm -f "$SHELL_CONFIG_TEMP_FILE"; exit 1" 1 2 3 15
-    sleep 5
+    sleep 3
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
@@ -89,7 +89,7 @@ wait
 if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
 
     _say "RESTORING '.git/config' from '$TEMP_GIT_REPO_NAME/.gitrepoconfig'"
-    cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
+    cp "$TEMP_GIT_REPO_NAME/.gitrepoconfig" .git/config
     wait
 
     _say "REMOVING '$TEMP_GIT_REPO_NAME'"
