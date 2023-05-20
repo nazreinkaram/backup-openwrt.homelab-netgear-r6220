@@ -87,7 +87,7 @@ if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
 
 else
 
-    say "Failed to clone provided git repository. Please check the URL and try again."
+    say "Failed to clone git repository from "$GIT_URL", check the URL and try again."
 
 fi
 
