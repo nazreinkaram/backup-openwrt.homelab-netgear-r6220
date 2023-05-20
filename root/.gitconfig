@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+	
+[user]
+	name = Manjeet
+	email = manjeet.imaniac@gmail.com
+
+[credential]
+	helper = store

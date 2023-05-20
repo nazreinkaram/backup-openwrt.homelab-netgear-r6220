@@ -1,0 +1,64 @@
+# First of all, ignore everything
+*
+
+# Now tell git not to ignore stuff which is needed
+
+# ==================================
+# VSCode settings
+# ==================================
+!/.vscode/
+!/.vscode/*
+
+# ==================================
+# Stuff from openwrt file system
+# ==================================
+!/etc/
+# ----------------------------------
+!/etc/config/
+!/etc/config/acme
+!/etc/config/dhcp
+!/etc/config/dropbear
+!/etc/config/firewall
+!/etc/config/fstab
+!/etc/config/mwan3
+!/etc/config/network
+!/etc/config/nlbwmon
+!/etc/config/system
+!/etc/config/wireless
+# ----------------------------------
+!/etc/crontabs/
+!/etc/crontabs/*
+# ----------------------------------
+!/etc/dropbear/
+!/etc/dropbear/*
+# ----------------------------------
+!/etc/nlbwmon/
+!/etc/nlbwmon/**
+# ----------------------------------
+!/etc/ssh/
+!/etc/ssh/*
+# ----------------------------------
+!/etc/tailscale/
+!/etc/tailscale/**
+# ----------------------------------
+!/etc/dnsmasq.conf
+# ----------------------------------
+!/root/
+!/root/**
+
+# ==================================
+# Git config files and scrips
+# ==================================
+!/.gitignore
+!/git-reinit.sh
+!/install-initial-packages.sh
+
+# ==================================
+# Read me
+# ==================================
+!/README.md
+
+# ==================================
+# Operating system cache
+# ==================================
+!*DS_Store

@@ -1,0 +1,101 @@
+config dnsmasq
+	option ednspacket_max '1232'
+	option domainneeded '1'
+	option authoritative '1'
+	option local '/manjeet/'
+	option domain 'manjeet'
+	list server '127.0.0.1#5453'
+	option rebind_protection '1'
+	option rebind_localhost '1'
+	option localservice '0'
+	option readethers '1'
+	option leasefile '/tmp/dhcp.leases'
+	option noresolv '1'
+	option expandhosts '1'
+	option localise_queries '1'
+
+config odhcpd 'odhcpd'
+	option maindhcp '0'
+	option leasefile '/tmp/hosts/odhcpd'
+	option leasetrigger '/usr/sbin/odhcpd-update'
+	option loglevel '4'
+
+config dhcp 'lan_diwi'
+	option interface 'lan_diwi'
+	option start '100'
+	option limit '150'
+	option force '1'
+
+config dhcp 'lan'
+	option interface 'lan'
+	option start '11'
+	option limit '99'
+	option force '1'
+
+config host
+	option name 'diwi-router'
+	option mac 'D8:07:B6:3A:95:18'
+	option ip '172.16.0.2'
+	option dns '1'
+
+config host
+	option name 'archer-ax10'
+	option mac '6C:5A:B0:E8:7E:48'
+	option ip '10.1.1.2'
+	option dns '1'
+
+config host
+	option name 'pve'
+	option mac '00:07:E9:5F:8A:18'
+	option ip '10.1.1.9'
+	option dns '1'
+
+config host
+	option name 'nas'
+	option mac '0E:CD:D0:D1:39:43'
+	option ip '10.1.1.120'
+	option dns '1'
+
+config host
+	option name 'databases'
+	option mac '66:AF:5B:DA:FB:1B'
+	option ip '10.1.1.140'
+	option dns '1'
+
+config host
+	option name 'gitea'
+	option mac '7A:D6:12:D1:1C:41'
+	option ip '10.1.1.150'
+	option dns '1'
+
+config host
+	option name 'nginx'
+	option mac '9A:B2:FA:F6:7A:D8'
+	option ip '10.1.1.250'
+	option dns '1'
+
+config host
+	option name 'playground'
+	option mac '9A:71:1F:A0:57:5E'
+	option ip '10.1.1.253'
+	option dns '1'
+
+config host
+	option name 'tunnels'
+	option mac '02:9A:E8:55:5A:D6'
+	option ip '10.1.1.254'
+	option dns '1'
+
+config host
+	option name 'macbook'
+	option mac '1C:57:DC:59:A8:CE'
+	option ip '10.1.1.11'
+	option dns '1'
+
+config domain
+	option name 'onu'
+	option ip '192.168.100.1'
+
+config domain
+	option name 'qbittorrent.manjeet.dev'
+	option ip '100.108.89.41'

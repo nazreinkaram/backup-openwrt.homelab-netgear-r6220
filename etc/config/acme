@@ -1,0 +1,17 @@
+config acme
+	option state_dir '/etc/acme'
+	option account_email 'manjeet.imaniac@gmail.com'
+	option debug '1'
+
+config cert 'homelab_manjeet_dev'
+	option enabled '1'
+	option use_staging '1'
+	option keylength '4096'
+	list domains '*.homelab.manjeet.dev'
+	option update_uhttpd '0'
+	option validation_method 'dns'
+	option dns 'dns_cf'
+	list credentials 'dns_cloudflare_api_token=15ficvz8FsfKVa_jWWU5TZ5kAzhH8BIjcf2MHRyI'
+	list credentials 'dns_cloudflare_api_key=c562c50b0f9341ccbb4b5f34887c4406be17e'
+	list credentials 'dns_cloudflare_email=inbox.manjeet@gmail.com'
+

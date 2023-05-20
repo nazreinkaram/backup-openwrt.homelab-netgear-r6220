@@ -1,0 +1,13 @@
+# Custom config
+
+# Update opkg database every hour
+0 * * * * opkg update
+
+# Make git-reninit file executable
+*/5 * * * * chmod +x /overlay/upper/git-reinit.sh
+
+# Auto commit and push changes in config to git every few minutes
+*/5 * * * * (cd /overlay/upper; git add -A; git commit -m 'auto commit by openwrt.homelab'; git push)
+
+# Added by ACME
+0 0 * * * /etc/init.d/acme start

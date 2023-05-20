@@ -1,0 +1,48 @@
+config globals 'globals'
+	option packet_steering '1'
+	option ula_prefix 'fd99:270d:93f5::/48'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'lan2'
+	list ports 'lan3'
+	list ports 'lan4'
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'lan_diwi'
+	option proto 'static'
+	option device 'lan1'
+	option ipaddr '172.16.0.1'
+	option netmask '255.255.255.0'
+
+config interface 'lan'
+	option proto 'static'
+	option device 'br-lan'
+	option ipaddr '10.1.1.1'
+	option netmask '255.255.255.0'
+
+config interface 'wan_onu'
+	option device 'wan'
+	option proto 'static'
+	option ipaddr '192.168.100.2'
+	option netmask '255.255.255.0'
+
+config interface 'wan'
+	option device 'wan'
+	option proto 'pppoe'
+	option username 'manjeettk001'
+	option password 'manjeettk001'
+	option ipv6 'auto'
+
+config interface 'vpn_tailscale'
+	option proto 'static'
+	option device 'tailscale0'
+	option ipaddr '100.126.215.68'
+	option netmask '255.0.0.0'
+
