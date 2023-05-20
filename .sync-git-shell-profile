@@ -23,6 +23,7 @@ install_required_packages() {
     install_package nano-full
     install_package rsync
     install_package ethtool
+    install_package inotifywait
     #
     # Network tools
     install_package git-http
