@@ -18,16 +18,23 @@ wait() {
 
 install_required_packages() {
     # 
+    # Command line tools
     install_package bash
     install_package nano-full
     install_package rsync
-    install_package git-http
     install_package ethtool
-    install_package iptables-nft
+    #
+    # Network tools
+    install_package git-http
     install_package stubby
+    #
+    install_package iptables-nft
     install_package tailscale
+    #
+    # Web interface
     install_package luci-app-nlbwmon
     install_package luci-app-wol
+    #
     install_package ddns-scripts
     install_package ddns-scripts-cloudflare
     install_package luci-app-acme
