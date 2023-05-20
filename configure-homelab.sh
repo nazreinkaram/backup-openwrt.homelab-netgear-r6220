@@ -11,9 +11,8 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
-    printf "\n!!! Shell config file not found, will download !!!\n"
+    printf "\n!!! Shell config file not found, will download !!!\n\n"
     sleep 2
-    printf ".\n"
     printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL".\n"
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
@@ -22,28 +21,24 @@ else
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
-        printf "SAVED shell config file to '$SHELL_CONFIG_TEMP_FILE'\n"
-        printf ".\n"
+        printf "SAVED shell config file to '$SHELL_CONFIG_TEMP_FILE'\n\n"
         printf "SOURCING it now...\n"
         sleep 2
 
         source "$SHELL_CONFIG_TEMP_FILE"
 
-        printf "SOURCED shell config file\n"
-        printf ".\n"
+        printf "SOURCED shell config file\n\n"
 
         printf "Now DELETING '$SHELL_CONFIG_TEMP_FILE'...\n"
         rm "$SHELL_CONFIG_TEMP_FILE"
-        printf ".\n"
         sleep 2
     else
         printf "FAILED to DOWNLOAD shell config file. Exiting...\n"
-        printf ".\n"
         exit 1
     fi
 fi
 
-_say "PROVIDE Backup Repository URL to restore"
+say "PROVIDE Backup Repository URL to restore"
 read -p "Enter URL [http(s)]: " GIT_URL
 
 say "Configuring homelab now..."
