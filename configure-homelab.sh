@@ -53,6 +53,11 @@ else
     fi
 fi
 
+if [ _say_ -ne 0 ]; then
+    printf "SOURCE shell config file IS INVALID. Exiting...\n"
+    exit 1
+fi
+
 say "CONFIGURING homelab now..."
 sleep 2
 

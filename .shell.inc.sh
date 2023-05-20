@@ -23,6 +23,10 @@ say_(){
     printf "/n$1"
 }
 
+_say_(){
+    printf "$1"
+}
+
 wait() {
     sleep 5
 }
