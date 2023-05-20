@@ -5,7 +5,7 @@ SHELL_CONFIG_FILE_NAME=".shell.inc.sh"
 SHELL_CONFIG_FILE="$(dirname "$0")/$SHELL_CONFIG_FILE_NAME"
 #
 
-printf "\nPROVIDE Backup Repository URL to restore\n\n"
+printf "\Provide Backup Repository URL to restore\n"
 printf "Default: $DEFAULT_GIT_URL\n\n"
 read -p "Enter to SELECT Default or Paste URL [https(s)]: " GIT_URL
 
