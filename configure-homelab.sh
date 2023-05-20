@@ -10,7 +10,7 @@ else
     SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
     SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/.shell.inc.sh"
 
-    curl -O "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
+    curl -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
