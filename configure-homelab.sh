@@ -74,7 +74,7 @@ say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
 git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME"
 wait
 
-# # if [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then
 
 # #     say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
 # #     cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
@@ -84,11 +84,11 @@ wait
 # #     rm -rf "$TEMP_GIT_REPO_NAME"
 # #     wait
 
-# # else
+else
 
-# #     say "Failed to clone provided git repository. Please check the URL and try again."
+    say "Failed to clone provided git repository. Please check the URL and try again."
 
-# # fi
+fi
 
 # # # # # Sync with remote
 # # # # git fetch --all
