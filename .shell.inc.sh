@@ -42,5 +42,5 @@ install_package() {
         fi
     fi
 
-    usleep 500000
+    sleep 1
 }
