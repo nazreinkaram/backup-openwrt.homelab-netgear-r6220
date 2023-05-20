@@ -1,0 +1,20 @@
+#!/bin/sh
+
+say "GOING to '$GITEA_BACKUP_REPOSITORY_PATH'"
+cd "$GITEA_BACKUP_REPOSITORY_PATH"
+wait
+_say "NOW in '$GITEA_BACKUP_REPOSITORY_PATH'"
+
+say "ADDING all tracked files by Git to WATCH LIST"
+# TRACKED_FILES=$(git ls-files)
+
+while read -r FILE_PATH; do
+    #
+    _say "ADDED '$FILE_PATH' to WATCH LIST"
+
+    inotifywait -e modify,create,delete "$FILE_PATH"
+
+    echo "File change detected: $FILE_PATH"
+    # Add your desired actions or commands here
+
+done <$(git ls-files)

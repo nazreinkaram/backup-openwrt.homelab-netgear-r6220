@@ -33,7 +33,7 @@
 !/etc/dropbear/*
 # ----------------------------------
 !/etc/init.d/
-!/etc/init.d/custom-*
+!/etc/init.d/sync-git
 # ----------------------------------
 !/etc/nlbwmon/
 !/etc/nlbwmon/**
@@ -45,26 +45,22 @@
 !/etc/tailscale/**
 # ----------------------------------
 !/etc/dnsmasq.conf
-!/etc/profile
 # ----------------------------------
 !/root/
 !/root/**
 # ----------------------------------
 !/usr/
 !/usr/bin/
-!/usr/bin/custom-*
-
+!/usr/bin/reint-sync-git
+!/usr/bin/setup-sync-git
+!/usr/bin/sync-git
+# ----------------------------------
 
 # ==================================
-# Git config files and scrips
+# Dot files
 # ==================================
 !/.gitignore
-!/.gitrepoconfig
-!/.shell.inc.sh
-!/configure-homelab.sh
-!/git-reinit.sh
-!/git-rollchanges.sh
-
+!/.sync-git-shell-profile
 
 # ==================================
 # Read me

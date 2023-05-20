@@ -1,5 +1,7 @@
 GITEA_BACKUP_REPOSITORY_NAME="backup-openwrt.homelab-netgear-r6220"
-# 
+GITEA_BACKUP_REPOSITORY_URL="http://gitea.manjeet/manjeet/$GITEA_REPOSITORY_NAME.git"
+GITEA_BACKUP_REPOSITORY_PATH="/overlay/upper/$GITEA_BACKUP_REPOSITORY_NAME"
+#
 INSTALLED_PACKAGES_LIST=$(opkg list-installed)
 
 say() {
@@ -10,8 +12,8 @@ _say() {
     printf "$1\n"
 }
 
-say_(){
-    printf "/n$1"
+say_() {
+    printf "\n$1"
 }
 
 wait() {
@@ -21,17 +23,18 @@ wait() {
 install_package() {
     #
     if [ "$(echo "$INSTALLED_PACKAGES_LIST" | grep "$1")" ]; then
+        #
         _say "Package '$1' is already installed, so SKIPPED"
     else
-        opkg install "$1" > /dev/null 2>&1
+        opkg install "$1" >/dev/null 2>&1
 
         if [ $? -eq 0 ]; then
-            _say "Package '$1' has been INSTALLED successfully."
+            _say "Package '$1' INSTALLED successfully"
         else
             _say "UNABLE to install package '$1'."
             return 1
         fi
     fi
-    
+
     sleep 1
 }
