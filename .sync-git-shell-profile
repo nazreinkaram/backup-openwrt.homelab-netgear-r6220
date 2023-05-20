@@ -52,6 +52,6 @@ install_package() {
     sleep 1
 }
 
-GITEA_BACKUP_REPOSITORY_NAME="backup-openwrt.homelab-netgear-r6220"
-GITEA_BACKUP_REPOSITORY_URL="http://gitea.manjeet/manjeet/$GITEA_REPOSITORY_NAME.git"
-GITEA_BACKUP_REPOSITORY_PATH="/overlay/upper/$GITEA_BACKUP_REPOSITORY_NAME"
+# GITEA_BACKUP_REPOSITORY_NAME="backup-openwrt.homelab-netgear-r6220"
+# GITEA_BACKUP_REPOSITORY_URL="http://gitea.manjeet/manjeet/$GITEA_REPOSITORY_NAME.git"
+# GITEA_BACKUP_REPOSITORY_PATH="/overlay/upper/$GITEA_BACKUP_REPOSITORY_NAME"
