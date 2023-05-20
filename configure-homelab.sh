@@ -1,10 +1,8 @@
 #!/bin/sh
 
-SHELL_CONFIG_FILE="$(dirname "$0")/.shell.inc.sh"
-
-SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/.shell.inc.sh"
+SHELL_CONFIG_FILE_NAME=".shell.inc.sh"
+SHELL_CONFIG_FILE="$(dirname "$0")/$SHELL_CONFIG_FILE_NAME"
 #
-SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
 
 printf "\nPROVIDE Backup Repository URL to restore\n"
 read -p "Enter URL [http(s)]: " GIT_URL
@@ -14,6 +12,11 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
+
+    SHELL_CONFIG_TEMP_FILE="/tmp/$SHELL_CONFIG_FILE_NAME"
+
+    $SHELL_CONFIG_REMOTE_URL=$(echo "$GIT_URL" | sed "s/\.git$/$SHELL_CONFIG_FILE_NAME/g")
+
     printf "\nShell config file is MISSING, will download !!!\n\n"
     sleep 2
     printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL".\n"
@@ -104,7 +107,7 @@ else
 
 fi
 
-say_
+say ""
 
 # # # # # Sync with remote
 # # # # git fetch --all
