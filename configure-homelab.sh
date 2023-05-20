@@ -82,16 +82,12 @@ cd "$WORKING_DIRECTORY"
 sleep 1
 _say "Now IN '$WORKING_DIRECTORY'"
 
-say "Now will run GIT COMMANDS"
+say "Now will run GIT and realated commands"
 
 TEMP_GIT_REPO_NAME="temp-git-repo"
 
 _say "DELETING any existing .git directory or temporary git repository"
 rm -rf .git "$TEMP_GIT_REPO_NAME"
-wait
-
-_say "INITIALIZING new Git repository"
-git init
 wait
 
 _say "CLONING provided git repository to '$TEMP_GIT_REPO_NAME'"
@@ -100,6 +96,10 @@ GIT_CLONE_EXIT_CODE=$?
 wait
 
 if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
+
+    _say "INITIALIZING new Git repository"
+    git init
+    wait
 
     _say "RESTORING '.git/config' from '$TEMP_GIT_REPO_NAME/.gitrepoconfig'"
     cp "$TEMP_GIT_REPO_NAME/.gitrepoconfig" .git/config
@@ -119,7 +119,7 @@ else
 
 fi
 
-say ""
+say
 
 # # # # # Sync with remote
 # # # # git fetch --all
