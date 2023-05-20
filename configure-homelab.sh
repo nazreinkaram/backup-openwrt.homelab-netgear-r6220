@@ -32,8 +32,8 @@ else
     fi
 fi
 
-printf "\n"
-read -p "Enter Backup Repository URL [http(s)]: " GIT_URL
+say "Enter Backup Repository URL [http(s)]: " 
+read GIT_URL
 
 # say "Started homelab configuration"
 # wait
