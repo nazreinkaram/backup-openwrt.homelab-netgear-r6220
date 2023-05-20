@@ -21,18 +21,18 @@ wait() {
 
 install_package() {
     #
-    say "Installing package '$1'..."
+    print "\nInstalling package '$1'...\n"
 
     if [ "$(echo "$INSTALLED_PACKAGES_LIST" | grep "$1")" ]; then
-        say "Package '$1' is already installed. Skipping..."
+        print "Package '$1' is already installed. Skipping...\n"
     else
         opkg install "$1"
 
         if [ $? -eq 0 ]; then
-            say "Package '$1' has been installed successfully."
+            print "Package '$1' has been installed successfully.\n"
         else
-            say "Failed to install package '$1'."
-            return -1
+            print "Failed to install package '$1'.\n"
+            return 1
         fi
     fi
 

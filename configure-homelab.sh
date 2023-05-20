@@ -49,6 +49,7 @@ install_package luci-app-wol
 install_package ddns-scripts
 install_package ddns-scripts-cloudflare
 install_package luci-app-acme
+install_package abchaha
 wait
 
 # say "Deleting any existing .git directory"
