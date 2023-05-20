@@ -8,6 +8,7 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     #
 else
     printf "\nShell config file not found. Downloading...\n"
+    sleep 2
 
     SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
     #
@@ -18,12 +19,13 @@ else
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
         printf "Downloaded shell config file to '$SHELL_CONFIG_TEMP_FILE'. Sourcing...\n"
-        wait
+        sleep 2
 
         source "$SHELL_CONFIG_TEMP_FILE"
 
         printf "Sourced shell config file. Now deleting '$SHELL_CONFIG_TEMP_FILE'...\n"
         rm "$SHELL_CONFIG_TEMP_FILE"
+        sleep 2
     else
         printf "Failed to download shell config file. Exiting...\n"
         exit 1
