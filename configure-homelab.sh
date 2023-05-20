@@ -1,49 +1,51 @@
 #!/bin/sh
 
-DEFAULT_GIT_URL="http://gitea.manjeet:3000/manjeet/backup-openwrt.homelab-netgear-r6220.git"
-SHELL_CONFIG_FILE_NAME=".shell.inc.sh"
-SHELL_CONFIG_FILE="$(dirname "$0")/$SHELL_CONFIG_FILE_NAME"
+GITEA_REPOSITORY_NAME="backup-openwrt.homelab-netgear-r6220"
+GITEA_REPOSITORY_URL="http://gitea.manjeet/manjeet/$GITEA_REPOSITORY_NAME.git"
+#
+CONFIG_SHELL_FILE_NAME=".shell.inc.sh"
+CONFIG_SHELL_FILE="$(dirname "$0")/$CONFIG_SHELL_FILE_NAME"
 #
 
 printf "\nProvide Backup Repository URL to restore"
 printf "\n-----------------------------------------\n"
-printf "Default: $DEFAULT_GIT_URL\n\n"
+printf "Default: $GITEA_REPOSITORY_URL\n\n"
 read -p "Enter to SELECT Default or Paste URL [https(s)]: " GIT_URL
 
 if [ -z "$GIT_URL" ]; then
-    GIT_URL=$DEFAULT_GIT_URL
+    GIT_URL=$GITEA_REPOSITORY_URL
 fi
 
-if [ -f "$SHELL_CONFIG_FILE" ]; then
+if [ -f "$CONFIG_SHELL_FILE" ]; then
     #
-    source "$SHELL_CONFIG_FILE"
+    source "$CONFIG_SHELL_FILE"
     #
 else
-
-    SHELL_CONFIG_TEMP_FILE="/tmp/$SHELL_CONFIG_FILE_NAME"
-
-    $SHELL_CONFIG_REMOTE_URL=$(echo "$GIT_URL" | sed "s/\.git$/\raw\/branch\/main\/$SHELL_CONFIG_FILE_NAME/g")
+    #
+    CONFIG_SHELL_TEMP_FILE="/tmp/$CONFIG_SHELL_FILE_NAME"
+    #
+    CONFIG_SHELL_REMOTE_URL="http://gitea.manjeet/manjeet/$GITEA_REPOSITORY_NAME/raw/branch/main/$CONFIG_SHELL_FILE_NAME"
 
     printf "\nShell config file is MISSING, will download !!!\n\n"
     sleep 2
-    printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL".\n"
+    printf "DOWNLOADING from "$CONFIG_SHELL_REMOTE_URL".\n"
 
-    curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
-    trap "rm -f "$SHELL_CONFIG_TEMP_FILE"; exit 1" 1 2 3 15
+    curl -s -o "$CONFIG_SHELL_TEMP_FILE" "$CONFIG_SHELL_REMOTE_URL"
+    trap "rm -f "$CONFIG_SHELL_TEMP_FILE"; exit 1" 1 2 3 15
     sleep 3
 
-    if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
+    if [ -f "$CONFIG_SHELL_TEMP_FILE" ]; then
         #
-        printf "SAVED shell config file to '$SHELL_CONFIG_TEMP_FILE'\n\n"
+        printf "SAVED shell config file to '$CONFIG_SHELL_TEMP_FILE'\n\n"
         printf "SOURCING it now...\n"
         sleep 2
 
-        source "$SHELL_CONFIG_TEMP_FILE"
+        source "$CONFIG_SHELL_TEMP_FILE"
 
         printf "SOURCED shell config file\n\n"
 
-        printf "Now DELETING '$SHELL_CONFIG_TEMP_FILE'...\n"
-        rm "$SHELL_CONFIG_TEMP_FILE"
+        printf "Now DELETING '$CONFIG_SHELL_TEMP_FILE'...\n"
+        rm "$CONFIG_SHELL_TEMP_FILE"
         sleep 2
     else
         printf "FAILED to DOWNLOAD shell config file. Exiting...\n"
@@ -80,7 +82,10 @@ cd "$WORKING_DIRECTORY"
 sleep 1
 _say "Now IN '$WORKING_DIRECTORY'"
 
-say "Now will EXECUTE git STUFF"
+say "Now will run GIT COMMANDS"
+
+TEMP_GIT_REPO_NAME="temp-git-repo"
+
 _say "DELETING any existing .git directory or temporary git repository"
 rm -rf .git "$TEMP_GIT_REPO_NAME"
 wait
