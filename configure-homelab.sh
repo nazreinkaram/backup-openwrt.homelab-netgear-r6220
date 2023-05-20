@@ -7,14 +7,22 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
+    say "Shell config file not found. Downloading..."
+
     SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
+    #
     SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/.shell.inc.sh"
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
+        say "Downloaded shell config file to '$SHELL_CONFIG_TEMP_FILE'. Sourcing..."
+        wait
+
         source "$SHELL_CONFIG_TEMP_FILE"
+
+        say "Sourced shell config file. Now deleting '$SHELL_CONFIG_TEMP_FILE'..."
         rm "$SHELL_CONFIG_TEMP_FILE"
     else
         echo "Failed to download shell config file. Exiting..."
