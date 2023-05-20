@@ -50,8 +50,11 @@
 # Git config files and scrips
 # ==================================
 !/.gitignore
+!/.gitrepoconfig
+!/git-configure-homelab.sh
 !/git-reinit.sh
-!/install-initial-packages.sh
+!/git-rollchanges.sh
+
 
 # ==================================
 # Read me
