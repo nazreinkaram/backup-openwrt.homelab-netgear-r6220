@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname "$0")/config.inc.sh"
+source "$(dirname "$0")/.shell.inc.sh"
 
 printf "\n"
 read -p "Enter Backup Repository URL [http(s)]: " GIT_URL

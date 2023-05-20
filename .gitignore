@@ -51,7 +51,7 @@
 # ==================================
 !/.gitignore
 !/.gitrepoconfig
-!/config.inc.sh
+!/.shell.inc.sh
 !/configure-homelab.sh
 !/git-reinit.sh
 !/git-rollchanges.sh
