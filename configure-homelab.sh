@@ -98,6 +98,10 @@ wait
 
 if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
 
+    _say "RESTORING 'git global config' from '$TEMP_GIT_REPO_NAME'"
+    cp "$TEMP_GIT_REPO_NAME/root/.git-credentials" /root/.git-credentials
+    cp "$TEMP_GIT_REPO_NAME/root/.gitconfig" /root/.gitconfig
+
     _say "INITIALIZING new Git repository"
     git init
     wait
