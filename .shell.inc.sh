@@ -26,7 +26,7 @@ install_package() {
     if [ "$(echo "$INSTALLED_PACKAGES_LIST" | grep "$1")" ]; then
         printf "Package '$1' is already installed. Skipping...\n"
     else
-        opkg install "$1"
+        opkg install "$1" > /dev/null 2>&1
 
         if [ $? -eq 0 ]; then
             printf "Package '$1' has been installed successfully.\n"
