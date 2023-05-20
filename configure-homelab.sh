@@ -17,7 +17,7 @@ else
     printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL".\n"
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
-    trap "rm -rf "$SHELL_CONFIG_TEMP_FILE")" 1 2 3 15
+    trap "rm -rf "$SHELL_CONFIG_TEMP_FILE"" 1 2 3 15
     sleep 5
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
