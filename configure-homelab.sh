@@ -49,16 +49,14 @@ read -p "Enter URL [http(s)]: " GIT_URL
 say "Configuring homelab now..."
 wait
 
-say "GOING to: '$WORKING_DIRECTORY'"
-cd "$WORKING_DIRECTORY"
-wait
 
 
-_say "UPDATING package list"
+say "UPDATING package list"
 # opkg update
 wait
+_say "DONE updating package list"
 
-_say "INSTALLING necessary packages one by one"
+say "INSTALLING necessary packages one by one"
 install_package bash
 install_package nano-full
 install_package git-http
@@ -74,12 +72,18 @@ install_package luci-app-acme
 _say "DONE installing packages"
 wait
 
-_say "DELETING any existing .git directory"
-# rm -rf .git
+say "GOING to: '$WORKING_DIRECTORY'"
+cd "$WORKING_DIRECTORY"
+sleep 1
+_say "Now IN '$WORKING_DIRECTORY'"
+
+say "Now will EXECUTE git STUFF"
+_say "DELETING any existing .git directory or temporary git repository"
+rm -rf .git "$TEMP_GIT_REPO_NAME"
 wait
 
 _say "INITIALIZING new Git repository"
-# git init
+git init
 wait
 
 _say "CLONING provided git repository to '$TEMP_GIT_REPO_NAME'"
