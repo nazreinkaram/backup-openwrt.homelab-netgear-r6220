@@ -46,11 +46,10 @@ fi
 _say "PROVIDE Backup Repository URL to restore"
 read -p "Enter URL [http(s)]: " GIT_URL
 
-say 
-_say "Configuring homelab now..."
+say "Configuring homelab now..."
 wait
 
-_say "GOING to: '$WORKING_DIRECTORY'"
+say "GOING to: '$WORKING_DIRECTORY'"
 cd "$WORKING_DIRECTORY"
 wait
 
