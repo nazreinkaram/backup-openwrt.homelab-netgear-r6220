@@ -42,9 +42,7 @@ say "PROVIDE Backup Repository URL to restore"
 read -p "Enter URL [http(s)]: " GIT_URL
 
 say "Configuring homelab now..."
-wait
-
-
+sleep 2
 
 say "UPDATING package list"
 # opkg update
@@ -96,14 +94,17 @@ if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
     rm -rf "$TEMP_GIT_REPO_NAME"
     wait
 
+    say "SUCCESS, reboot now."
+
 else
 
-    _say "FAILED to clone git repository from "$GIT_URL", check the URL and try again."
+    _say "UNABLE to clone git repository from "$GIT_URL", check the URL and try again."
+
+    say "FAILED"
 
 fi
 
 
-say "DONE!!!"
 
 # # # # # Sync with remote
 # # # # git fetch --all
