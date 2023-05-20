@@ -43,7 +43,7 @@ else
     fi
 fi
 
-say "START: Provide Backup Repository URL to restore"
+_say "PROVIDE Backup Repository URL to restore"
 read -p "Enter URL [http(s)]: " GIT_URL
 
 say "Configuring homelab now..."
