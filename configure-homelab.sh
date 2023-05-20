@@ -1,6 +1,26 @@
 #!/bin/bash
 
-source "$(dirname "$0")/.shell.inc.sh"
+SHELL_CONFIG_FILE="$(dirname "$0")/.shell.inc.sh"
+
+if [ -f "$SHELL_CONFIG_FILE" ]; then
+    #
+    source "$SHELL_CONFIG_FILE"
+    #
+else
+    SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
+    SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/.shell.inc.sh"
+
+    curl -O "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
+
+    if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
+        #
+        source "$SHELL_CONFIG_TEMP_FILE"
+        rm "$SHELL_CONFIG_TEMP_FILE"
+    else
+        echo "Failed to download shell config file. Exiting..."
+        exit 1
+    fi
+fi
 
 printf "\n"
 read -p "Enter Backup Repository URL [http(s)]: " GIT_URL
