@@ -37,19 +37,10 @@ say "Updating package list"
 # wait
 
 say "Installing necessary packages one by one"
-install_package bash;
-install_package nano-full;
-install_package git-http;
-install_package ethtool;
-install_package iptables-nft;
-install_package stubby;
-install_package tailscale;
-install_package luci-app-nlbwmon;
-install_package luci-app-wol;
-install_package ddns-scripts;
-install_package ddns-scripts-cloudflare;
-install_package luci-app-acme;
-install_package abchaha;
+install_package bash
+install_package nano-full
+install_package git-http
+
 wait
 
 # say "Deleting any existing .git directory"

@@ -16,7 +16,7 @@ say() {
 }
 
 wait() {
-    sleep 5
+    sleep 1
 }
 
 install_package() {
