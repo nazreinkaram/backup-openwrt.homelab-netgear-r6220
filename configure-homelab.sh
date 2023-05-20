@@ -104,6 +104,7 @@ else
 
 fi
 
+say
 
 
 # # # # # Sync with remote
