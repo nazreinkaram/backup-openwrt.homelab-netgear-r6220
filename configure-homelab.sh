@@ -1,11 +1,17 @@
 #!/bin/sh
 
+DEFAULT_GIT_URL="http://gitea.manjeet:3000/manjeet/backup-openwrt.homelab-netgear-r6220.git"
 SHELL_CONFIG_FILE_NAME=".shell.inc.sh"
 SHELL_CONFIG_FILE="$(dirname "$0")/$SHELL_CONFIG_FILE_NAME"
 #
 
 printf "\nPROVIDE Backup Repository URL to restore\n"
-read -p "Enter URL [http(s)]: " GIT_URL
+printf "Default: $DEFAULT_GIT_URL\n"
+read -p "URL [http(s)] or Enter to select Default: " GIT_URL
+
+if [ -z "$GIT_URL" ]; then
+    GIT_URL=$DEFAULT_GIT_URL
+fi
 
 if [ -f "$SHELL_CONFIG_FILE" ]; then
     #
@@ -15,7 +21,7 @@ else
 
     SHELL_CONFIG_TEMP_FILE="/tmp/$SHELL_CONFIG_FILE_NAME"
 
-    $SHELL_CONFIG_REMOTE_URL=$(echo "$GIT_URL" | sed "s/\.git$/\/$SHELL_CONFIG_FILE_NAME/g")
+    $SHELL_CONFIG_REMOTE_URL=$(echo "$GIT_URL" | sed "s/\.git$/\raw\/branch\/main\/$SHELL_CONFIG_FILE_NAME/g")
 
     printf "\nShell config file is MISSING, will download !!!\n\n"
     sleep 2
