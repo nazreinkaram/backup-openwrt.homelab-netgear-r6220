@@ -32,6 +32,9 @@
 !/etc/dropbear/
 !/etc/dropbear/*
 # ----------------------------------
+!/etc/init.d/
+!/etc/init.d/custom-*
+# ----------------------------------
 !/etc/nlbwmon/
 !/etc/nlbwmon/**
 # ----------------------------------
@@ -42,9 +45,15 @@
 !/etc/tailscale/**
 # ----------------------------------
 !/etc/dnsmasq.conf
+!/etc/profile
 # ----------------------------------
 !/root/
 !/root/**
+# ----------------------------------
+!/usr/
+!/usr/bin/
+!/usr/bin/custom-*
+
 
 # ==================================
 # Git config files and scrips

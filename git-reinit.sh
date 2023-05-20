@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# SETTINGS
-WORKING_DIRECTORY="/overlay/upper"
+# SOURCE=
 BACKUP_FILE_PATH="/tmp/git.config-$(date +%s).backup"
 
 # * NO MORE EDITS BELOW

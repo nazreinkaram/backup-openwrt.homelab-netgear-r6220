@@ -1,23 +1,25 @@
 #!/bin/bash
 
-# SETTINGS
-WORKING_DIRECTORY="/overlay/upper"
+SOURCE "$(dirname "$0")/.shell.inc.sh"
 
-printf "\nChanging directory to: '$WORKING_DIRECTORY'\n"
+say "GOING TO '$WORKING_DIRECTORY'"
 cd "$WORKING_DIRECTORY"
 sleep 1
+_say "NOW IN '$WORKING_DIRECTORY'"
 
-printf "\nMaking all 'git-*.sh' scripts executable\n"
+say "MAKING all 'git-*.sh' scripts executable"
 chmod +x "$WORKING_DIRECTORY/git-*.sh"
-sleep 1
+wait
+_say "DONE"
 
-printf "\nCopying .git/config to .gitrepoconfig\n"
+say COPYING '.git/config' to '.gitrepoconfig'
 cp .git/config .gitrepoconfig
-sleep 1
+wait
+_say "DONE"
 
-printf "\nRolling changes to remote\n"
+say "COMMITING changes and PUSHING to remote"
 git add -A
 git commit -m "auto commit by openwrt.homelab"
 git push
 
-printf "\nDONE!!!\n"
+say "FINISHED"
