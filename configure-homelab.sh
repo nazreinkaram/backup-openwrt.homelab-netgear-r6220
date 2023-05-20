@@ -32,65 +32,65 @@ else
     fi
 fi
 
-printf "\n"
-read -p "Enter Backup Repository URL [http(s)]: " GIT_URL
+# printf "\n"
+# read -p "Enter Backup Repository URL [http(s)]: " GIT_URL
 
-say "Started homelab configuration"
-wait
-
-say "Changing directory to: '$WORKING_DIRECTORY'"
-cd "$WORKING_DIRECTORY"
-wait
-
-say "Updating package list"
-# opkg update
+# say "Started homelab configuration"
 # wait
 
-say "Installing necessary packages one by one"
-install_package bash
-install_package nano-full
-install_package git-http
-install_package ethtool
-install_package iptables-nft
-install_package stubby
-install_package tailscale
-install_package luci-app-nlbwmon
-install_package luci-app-wol
-install_package ddns-scripts
-install_package ddns-scripts-cloudflare
-install_package luci-app-acme
-
-wait
-
-# say "Deleting any existing .git directory"
-# rm -rf .git
+# say "Changing directory to: '$WORKING_DIRECTORY'"
+# cd "$WORKING_DIRECTORY"
 # wait
 
-# say "Initializing new Git repository"
-# git init
+# say "Updating package list"
+# # opkg update
+# # wait
+
+# say "Installing necessary packages one by one"
+# install_package bash
+# install_package nano-full
+# install_package git-http
+# install_package ethtool
+# install_package iptables-nft
+# install_package stubby
+# install_package tailscale
+# install_package luci-app-nlbwmon
+# install_package luci-app-wol
+# install_package ddns-scripts
+# install_package ddns-scripts-cloudflare
+# install_package luci-app-acme
+
 # wait
 
-# say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
-# git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME"
-# wait
+# # say "Deleting any existing .git directory"
+# # rm -rf .git
+# # wait
 
-# if [ $? -eq 0 ]; then
+# # say "Initializing new Git repository"
+# # git init
+# # wait
 
-#     say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
-#     cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
-#     wait
+# # say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
+# # git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME"
+# # wait
 
-#     say "Removing '$TEMP_GIT_REPO_NAME'"
-#     rm -rf "$TEMP_GIT_REPO_NAME"
-#     wait
+# # if [ $? -eq 0 ]; then
 
-# else
+# #     say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
+# #     cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
+# #     wait
 
-#     say "Failed to clone provided git repository. Please check the URL and try again."
+# #     say "Removing '$TEMP_GIT_REPO_NAME'"
+# #     rm -rf "$TEMP_GIT_REPO_NAME"
+# #     wait
 
-# fi
+# # else
 
-# # # # Sync with remote
-# # # git fetch --all
-# # # git reset --hard
-# # # git pull
+# #     say "Failed to clone provided git repository. Please check the URL and try again."
+
+# # fi
+
+# # # # # Sync with remote
+# # # # git fetch --all
+# # # # git reset --hard
+# # # # git pull
