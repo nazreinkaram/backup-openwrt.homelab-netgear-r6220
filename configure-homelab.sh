@@ -11,7 +11,7 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
-    printf "\nShell config file not found. DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL"...\n"
+    printf "\nShell config file not found.\nDOWNLOADING from "$SHELL_CONFIG_REMOTE_URL"...\n"
     sleep 2
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
@@ -32,7 +32,7 @@ else
     fi
 fi
 
-_say "STEP 1: Provide Backup Repository URL to restore"
+say "STEP 1: Provide Backup Repository URL to restore"
 read -p "Enter URL [http(s)]: " GIT_URL
 
 say "Started homelab configuration"
