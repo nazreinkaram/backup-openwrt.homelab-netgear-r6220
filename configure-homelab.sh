@@ -2,38 +2,38 @@
 
 SHELL_CONFIG_FILE="$(dirname "$0")/.shell.inc.sh"
 
+SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/.shell.inc.sh"
+#
+SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
+
 if [ -f "$SHELL_CONFIG_FILE" ]; then
     #
     source "$SHELL_CONFIG_FILE"
     #
 else
-    printf "\nShell config file not found. Downloading...\n"
+    printf "\nShell config file not found. DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL"...\n"
     sleep 2
-
-    SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
-    #
-    SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/.shell.inc.sh"
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
-        printf "Downloaded shell config file to '$SHELL_CONFIG_TEMP_FILE'. Sourcing...\n"
+        printf "DOWNLOADED shell config file to '$SHELL_CONFIG_TEMP_FILE', SOURCING...\n"
         sleep 2
 
         source "$SHELL_CONFIG_TEMP_FILE"
 
-        printf "Sourced shell config file. Now deleting '$SHELL_CONFIG_TEMP_FILE'...\n"
+        printf "SOURCED shell config file. Now DELETING '$SHELL_CONFIG_TEMP_FILE'...\n"
         rm "$SHELL_CONFIG_TEMP_FILE"
         sleep 2
     else
-        printf "Failed to download shell config file. Exiting...\n"
+        printf "FAILED to DOWNLOAD shell config file. Exiting...\n"
         exit 1
     fi
 fi
 
-printf "\n"
-read -p "Enter Backup Repository URL [http(s)]: " GIT_URL
+_say "STEP 1: Provide Backup Repository URL to restore"
+read -p "Enter URL [http(s)]: " GIT_URL
 
 say "Started homelab configuration"
 wait
@@ -71,7 +71,7 @@ wait
 # # wait
 
 say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
-git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME" > /dev/null 2>&1
+git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME" >/dev/null 2>&1
 GIT_CLONE_EXIT_CODE=$?
 wait
 

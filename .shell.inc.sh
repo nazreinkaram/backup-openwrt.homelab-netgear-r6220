@@ -15,6 +15,14 @@ say() {
     printf "\n$1\n"
 }
 
+_say() {
+    printf "$1\n"
+}
+
+say_(){
+    printf "/n$1"
+}
+
 wait() {
     sleep 1
 }
