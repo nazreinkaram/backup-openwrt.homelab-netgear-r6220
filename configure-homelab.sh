@@ -7,7 +7,7 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
-    say "Shell config file not found. Downloading..."
+    printf "\nShell config file not found. Downloading...\n"
 
     SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
     #
@@ -17,15 +17,15 @@ else
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
-        say "Downloaded shell config file to '$SHELL_CONFIG_TEMP_FILE'. Sourcing..."
+        printf "Downloaded shell config file to '$SHELL_CONFIG_TEMP_FILE'. Sourcing...\n"
         wait
 
         source "$SHELL_CONFIG_TEMP_FILE"
 
-        say "Sourced shell config file. Now deleting '$SHELL_CONFIG_TEMP_FILE'..."
+        printf "Sourced shell config file. Now deleting '$SHELL_CONFIG_TEMP_FILE'...\n"
         rm "$SHELL_CONFIG_TEMP_FILE"
     else
-        echo "Failed to download shell config file. Exiting..."
+        printf "Failed to download shell config file. Exiting...\n"
         exit 1
     fi
 fi
