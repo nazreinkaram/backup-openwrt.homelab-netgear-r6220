@@ -15,7 +15,7 @@ else
 
     SHELL_CONFIG_TEMP_FILE="/tmp/$SHELL_CONFIG_FILE_NAME"
 
-    $SHELL_CONFIG_REMOTE_URL=$(echo "$GIT_URL" | sed "s/\.git$/$SHELL_CONFIG_FILE_NAME/g")
+    $SHELL_CONFIG_REMOTE_URL=$(echo "$GIT_URL" | sed "s/\.git$/\/$SHELL_CONFIG_FILE_NAME/g")
 
     printf "\nShell config file is MISSING, will download !!!\n\n"
     sleep 2
