@@ -42,5 +42,5 @@ install_package() {
         fi
     fi
 
-    sleep 1
+    sleep 0.1
 }
