@@ -88,7 +88,7 @@ wait
 
 if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
 
-    _say "RESTORING '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
+    _say "RESTORING '.git/config' from '$TEMP_GIT_REPO_NAME/.gitrepoconfig'"
     cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
     wait
 
