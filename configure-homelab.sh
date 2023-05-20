@@ -6,12 +6,15 @@ SHELL_CONFIG_REMOTE_URL="http://gitea.manjeet/manjeet/backup-openwrt.homelab-net
 #
 SHELL_CONFIG_TEMP_FILE="/tmp/.shell.inc.sh"
 
+printf "\nPROVIDE Backup Repository URL to restore\n"
+read -p "Enter URL [http(s)]: " GIT_URL
+
 if [ -f "$SHELL_CONFIG_FILE" ]; then
     #
     source "$SHELL_CONFIG_FILE"
     #
 else
-    printf "\n!!! Shell config file not found, will download !!!\n\n"
+    printf "\n\n!!! Shell config file not found, will download !!!\n\n"
     sleep 2
     printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL".\n"
 
@@ -37,9 +40,6 @@ else
         exit 1
     fi
 fi
-
-say "PROVIDE Backup Repository URL to restore"
-read -p "Enter URL [http(s)]: " GIT_URL
 
 say "Configuring homelab now..."
 sleep 2
@@ -104,8 +104,7 @@ else
 
 fi
 
-say
-
+say_
 
 # # # # # Sync with remote
 # # # # git fetch --all
