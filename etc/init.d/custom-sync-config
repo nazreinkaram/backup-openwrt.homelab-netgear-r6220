@@ -1,0 +1,44 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=01
+
+start() {
+    echo "Stated Sync Config."
+    <command>
+}
+
+stop() {
+    echo "Stopping Sync Config."
+    # Add any cleanup or shutdown logic here
+}
+
+restart() {
+    stop
+    sleep 1
+    start
+}
+
+reload() {
+    restart
+}
+
+boot() {
+    start
+}
+
+shutdown() {
+    stop
+}
+
+case $1 in
+    start|stop|restart|reload|boot|shutdown)
+        $1
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|reload|boot|shutdown}"
+        exit 1
+        ;;
+esac
+
+exit 0
