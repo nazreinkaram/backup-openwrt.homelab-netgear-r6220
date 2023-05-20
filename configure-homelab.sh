@@ -71,18 +71,19 @@ wait
 # # wait
 
 say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
-git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME"
+git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME" > /dev/null 2>&1
+GIT_CLONE_EXIT_CODE=$?
 wait
 
-if [ $? -eq 0 ]; then
+if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
 
-# #     say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
-# #     cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
-# #     wait
+    say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
+    cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
+    wait
 
-# #     say "Removing '$TEMP_GIT_REPO_NAME'"
-# #     rm -rf "$TEMP_GIT_REPO_NAME"
-# #     wait
+    say "Removing '$TEMP_GIT_REPO_NAME'"
+    rm -rf "$TEMP_GIT_REPO_NAME"
+    wait
 
 else
 
