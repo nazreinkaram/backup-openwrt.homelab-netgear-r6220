@@ -11,25 +11,38 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
-    printf "\nShell config file not found.\nDOWNLOADING from "$SHELL_CONFIG_REMOTE_URL"...\n"
+    printf "\n=============================\n"
+    printf "!!! Shell config file not found, will download !!!\n"
+    sleep 2
+    printf "-------------------------------\n"
+    printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL"...\n"
     sleep 2
 
     curl -s -o "$SHELL_CONFIG_TEMP_FILE" "$SHELL_CONFIG_REMOTE_URL"
 
     if [ -f "$SHELL_CONFIG_TEMP_FILE" ]; then
         #
-        printf "DOWNLOADED shell config file to '$SHELL_CONFIG_TEMP_FILE', SOURCING...\n"
+        printf "SAVED shell config file to '$SHELL_CONFIG_TEMP_FILE'\n"
+        printf "-------------------------------\n"
+        printf "SOURCING it now...\n"
         sleep 2
 
         source "$SHELL_CONFIG_TEMP_FILE"
 
-        printf "SOURCED shell config file. Now DELETING '$SHELL_CONFIG_TEMP_FILE'...\n"
+        printf "SOURCED shell config file\n"
+        printf "-------------------------------\n"
+
+        printf "Now DELETING '$SHELL_CONFIG_TEMP_FILE'...\n"
         rm "$SHELL_CONFIG_TEMP_FILE"
+        printf "-------------------------------\n"
         sleep 2
     else
         printf "FAILED to DOWNLOAD shell config file. Exiting...\n"
+        printf "-------------------------------\n"
         exit 1
     fi
+
+    printf "=============================\n"
 fi
 
 say "STEP 1: Provide Backup Repository URL to restore"
