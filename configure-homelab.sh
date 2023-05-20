@@ -70,9 +70,9 @@ wait
 # # git init
 # # wait
 
-# # say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
-# # git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME"
-# # wait
+say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
+git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME"
+wait
 
 # # if [ $? -eq 0 ]; then
 
