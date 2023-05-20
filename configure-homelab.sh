@@ -48,19 +48,16 @@ read -p "Enter URL [http(s)]: " GIT_URL
 say "Configuring homelab now..."
 wait
 
-say "Going to directory to: '$WORKING_DIRECTORY'"
+_say "Going to directory to: '$WORKING_DIRECTORY'"
 cd "$WORKING_DIRECTORY"
 wait
 
-say "COMPLETED: STEP 1"
 
-say "------------------------------------------------"
-
-say "Updating package list"
+_say "Updating package list"
 # opkg update
 wait
 
-say "Installing necessary packages one by one"
+_say "Installing necessary packages one by one"
 install_package bash
 install_package nano-full
 install_package git-http
@@ -75,34 +72,32 @@ install_package ddns-scripts-cloudflare
 install_package luci-app-acme
 wait
 
-say "------------------------------------------------"
-
-say "Deleting any existing .git directory"
+_say "Deleting any existing .git directory"
 # rm -rf .git
 wait
 
-say "Initializing new Git repository"
+_say "Initializing new Git repository"
 # git init
 wait
 
-say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
+_say "Cloning provided git repository to '$TEMP_GIT_REPO_NAME'"
 git clone "$GIT_URL" "$TEMP_GIT_REPO_NAME" >/dev/null 2>&1
 GIT_CLONE_EXIT_CODE=$?
 wait
 
 if [ "$GIT_CLONE_EXIT_CODE" -eq 0 ]; then
 
-    say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
+    _say "Restoring '.git/config' from '$TEMP_GIT_REPO_NAME.gitrepoconfig'"
     # cp "$TEMP_GIT_REPO_NAME.gitrepoconfig" .git/config
     wait
 
-    say "Removing '$TEMP_GIT_REPO_NAME'"
+    _say "Removing '$TEMP_GIT_REPO_NAME'"
     rm -rf "$TEMP_GIT_REPO_NAME"
     wait
 
 else
 
-    say "Failed to clone git repository from "$GIT_URL", check the URL and try again."
+    _say "Failed to clone git repository from "$GIT_URL", check the URL and try again."
 
 fi
 
