@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 GITEA_REPOSITORY_NAME="backup-openwrt.homelab-netgear-r6220"
 GITEA_REPOSITORY_URL="http://gitea.manjeet/manjeet/$GITEA_REPOSITORY_NAME.git"
@@ -51,11 +52,6 @@ else
         printf "FAILED to DOWNLOAD shell config file. Exiting...\n"
         exit 1
     fi
-fi
-
-if [ _say_ -ne 0 ]; then
-    printf "SOURCE shell config file IS INVALID. Exiting...\n"
-    exit 1
 fi
 
 say "CONFIGURING homelab now..."
