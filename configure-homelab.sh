@@ -6,8 +6,8 @@ SHELL_CONFIG_FILE="$(dirname "$0")/$SHELL_CONFIG_FILE_NAME"
 #
 
 printf "\nPROVIDE Backup Repository URL to restore\n"
-printf "Default: $DEFAULT_GIT_URL\n"
-read -p "URL [http(s)] or Enter to select Default: " GIT_URL
+printf "\nDefault: $DEFAULT_GIT_URL\n"
+read -p "\nEnter to SELECT Default or Paste URL [https(s)]: " GIT_URL
 
 if [ -z "$GIT_URL" ]; then
     GIT_URL=$DEFAULT_GIT_URL
