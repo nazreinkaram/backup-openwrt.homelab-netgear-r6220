@@ -40,6 +40,8 @@ say "Installing necessary packages one by one"
 install_package bash
 install_package nano-full
 install_package git-http
+install_package ethtool
+install_package iptables-nft
 
 wait
 
