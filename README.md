@@ -48,20 +48,8 @@ reboot
 11. Now log into router via SSH once again and run:
 
 ```bash
-# Update package list
-opkg update
-
-# Install git 
-opkg install git-http
-
-# Go to overlay directory
-cd /overlay/upper
-
-# Clone this repo in current directory
-git clone [REPO_URL] .
-
-# Install required packages
-sh /overlay/upper/install-initial-packages.sh
+# Excute shell script
+sh -c "$(curl -s http://gitea.manjeet/manjeet/backup-openwrt.homelab-netgear-r6220/raw/branch/main/configure-homelab.sh)"
 
 # Finally reboot
 reboot
