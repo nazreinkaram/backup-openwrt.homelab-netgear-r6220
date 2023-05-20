@@ -14,7 +14,7 @@ if [ -f "$SHELL_CONFIG_FILE" ]; then
     source "$SHELL_CONFIG_FILE"
     #
 else
-    printf "\n!!! Shell config file NOT FOUND, will download !!!\n\n"
+    printf "\nShell config file is MISSING, will download !!!\n\n"
     sleep 2
     printf "DOWNLOADING from "$SHELL_CONFIG_REMOTE_URL".\n"
 
