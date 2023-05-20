@@ -3,12 +3,12 @@
 # SETTINGS
 WORKING_DIRECTORY="/overlay/upper"
 
-# Make all git commands executable
-chmod +x "$WORKING_DIRECTORY/git-*.sh"
-
-# Change directory to working directory
 printf "\nChanging directory to: '$WORKING_DIRECTORY'\n"
 cd "$WORKING_DIRECTORY"
+sleep 1
+
+printf "\nMaking all 'git-*.sh' scripts executable\n"
+chmod +x "$WORKING_DIRECTORY/git-*.sh"
 sleep 1
 
 printf "\nCopying .git/config to .gitrepoconfig\n"
